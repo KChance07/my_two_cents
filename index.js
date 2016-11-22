@@ -10,11 +10,15 @@ server.use(bodyParser.urlencoded({extended: true}));
 var port = process.env.PORT || 8080;
 var mongoURI = process.env.MONGOURI || require('./config.js').mongoURI;
 
-mongoose.connect(mongoURI); //establish the connection to the mongo database
+mongoose.connect(mongoURI);
+mongoose.Promise = require('');
+
+server.use(express.static(__dirname + '/public'));
 
 server.get('/', function(req, res){
-  res.send('I am working!');
+  res.sendFile('public/html/index.html', {root:__dirname});
 });
+
 server.use(postRouter);
 
 server.listen(port, function(){
