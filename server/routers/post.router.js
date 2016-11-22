@@ -31,7 +31,6 @@ router.get('/posts/:id', function(req, res){
     });
   });
 });
-
 router.post('/posts', function(req, res){
   var post = new Post(req.body);
   post.postDate = new Date();
@@ -47,7 +46,6 @@ router.post('/posts', function(req, res){
     });
   });
 });
-
 router.put('/posts/:id', function(req, res){
   Post.findOneAndUpdate({_id: req.params.id}, req.body, function(err, oldPost){
     if(err){
@@ -60,16 +58,15 @@ router.put('/posts/:id', function(req, res){
     });
   });
 });
-
 router.delete('/posts/:id', function(req, res){
   Post.findOneAndRemove({_id: req.params.id}, function(err, oldPost){
     if(err){
-      res.status(500).json({
+      return res.status(500).json({
         msg: err
       });
     }
-    res.status(200).json({
-      msg: oldPost
+    return res.status(200).json({
+      msg: deletedPost
     });
   });
 });
