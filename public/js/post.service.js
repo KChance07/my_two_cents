@@ -4,8 +4,9 @@
 
     PostService.$inject = ['$http'];
 
-    function PostService('$http') {
+    function PostService($http) {
       var posts = [];
+      var baseUrl = '/posts/';
       init();
       return {
         getAll: getAll,
@@ -14,9 +15,18 @@
         update: update,
         delete: deleteOne,
       };
-      
-      function init(){}
-      function getAll(){}
+
+      function init(){
+        $http.get(baseUrl)
+              .then(function(response){posts = response.data.posts;
+              })
+              .catch(function(err){
+                console.log(err);
+              });
+      }
+      function getAll(){
+        return posts;
+      }
       function getOne(id){}
       function create(newPost){}
       function update(id, newPostData){}

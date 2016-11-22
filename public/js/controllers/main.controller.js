@@ -1,11 +1,11 @@
 (function() {
-  angular.module('my-two-cents')
+  angular.module('my_two_cents')
   .controller("Main.Controller", MainController);
 
   MainController.$inject = ['$scope', 'PostService'];
 
   function MainController($scope){
-    $scope.post = PostService.get();
+    $scope.posts = PostService.getAll();
     $scope.selectPost = selectPost;
     $scope.createPost = createPost;
     $scope.deletePost = deletePost;
@@ -19,9 +19,9 @@
     $scope.blankPost = {};
 
     $scope.$watch(function(){
-      return PostService.get();
+      return PostService.getAll();
     }, function(){
-      $scope.post = PostService.get();
+      $scope.posts = PostService.getAll();
     });
     function selectPost(post, index) {
       if($scope.enteringPost) {$scope.enteringPost = false}
