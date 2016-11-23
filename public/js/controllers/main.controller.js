@@ -38,7 +38,7 @@
       PostService.create(newPost);
       selectPost(newPost, $scope.post.length)
     }
-    function deletePost(index) {
+    function deleteOne(index) {
       PostService.delete(index);
       $scope.postSelected = false;
       $scope.enteringPost = false;

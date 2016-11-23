@@ -9,14 +9,22 @@
   </head>
   <body>
     <div ng-controller="MainController">
+      Author:
+      <input type="text" ng-model='newPost.author'>
+      Title:
+      <input type="text" ng-model='newPost.title'>
+      Body:
+      <textarea cols="30" rows="10" ng-model='newPost.body'></textarea><br>
+      <button type="btn btn-default" ng-click='create(newPost)'>Create</button>
         <pre ng-if='posts'>
+          <hr>
+          Get One:
+          <input type="text" ng-model='getId'>
+          <button class="btn btn-success" ng-click="getOne(getId)">Get That!</button>
+          <hr>
           {{ posts | json }}
         </pre>
     </div>
-    <header>
-    </header>
-    <main>
-    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
